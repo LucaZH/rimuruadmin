@@ -1,0 +1,6 @@
+table/__pycache__/*
+table/migrations/__pycache__/*
+env/
+__pycache__/
+__pycache__/__init__.cpython-38.pyc
+__pycache__/settings.cpython-38.pyc
