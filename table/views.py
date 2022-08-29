@@ -79,6 +79,7 @@ def centremedical_detail(request, pk):
     elif request.method == 'DELETE':
         cm.delete()
         return HttpResponse(status=204)
+
 @csrf_exempt
 def pharmacie_list(request):
     if request.method == 'GET':

@@ -1,7 +1,8 @@
 table/__pycache__/*
-table/migrations/__pycache__/*
+rimuru/__pycache__/*
 env/
-__pycache__/
-__pycache__/__init__.cpython-38.pyc
-__pycache__/settings.cpython-38.pyc
+__pycache__/*
 db.sqlite3
+table/migrations/__pycache__/*
+table/migrations/0002_alter_centremedical_zone.py
+table/migrations/0001_initial.py

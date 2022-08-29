@@ -20,38 +20,40 @@ class UtilisateurapiSerializer(serializers.Serializer):
         return instance
 class CentreMedicalapiSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    name = serializers.CharField(required=True, allow_blank=False, max_length=200)
+    nom = serializers.CharField(required=True, allow_blank=False, max_length=200)
     localisation = serializers.CharField(required=True, allow_blank=False, max_length=200)
     contact = serializers.CharField(required=False, allow_blank=True, max_length=200)
-    statut = serializers.BooleanField()
-    publisher_id =serializers.CharField(required=True,max_length=100,allow_blank=False)
+    verifier = serializers.BooleanField()
+    publier_par =serializers.CharField(required=True,max_length=100,allow_blank=False)
+    zone = serializers.IntegerField()
     def create(self, validated_data):
         return CentreMedical.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.statut = validated_data.get('statut', instance.statut)
+        instance.nom = validated_data.get('nom', instance.nom)
+        instance.verifier = validated_data.get('verifier', instance.verifier)
         instance.localisation = validated_data.get('localisation', instance.localisation)
         instance.contact = validated_data.get('contact', instance.contact)
-        instance.publisher_id = validated_data.get('publisher_id', instance.publisher_id)
+        instance.publier_par = validated_data.get('publier_par', instance.publier_par)
         instance.save()
         return instance
 class PharmacieapiSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    name = serializers.CharField(required=True, allow_blank=False, max_length=200)
+    nom = serializers.CharField(required=True, allow_blank=False, max_length=200)
     localisation = serializers.CharField(required=True, allow_blank=False, max_length=200)
     contact = serializers.CharField(required=False, allow_blank=True, max_length=200)
-    statut = serializers.BooleanField()
-    publisher_id =serializers.CharField(required=True,max_length=100,allow_blank=False)
+    verifier = serializers.BooleanField()
+    publier_par =serializers.CharField(required=True,max_length=100,allow_blank=False)
+    zone = serializers.IntegerField()
     def create(self, validated_data):
         return Pharmacie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.statut = validated_data.get('statut', instance.statut)
+        instance.nom = validated_data.get('nom', instance.nom)
+        instance.verifier = validated_data.get('verifier', instance.verifier)
         instance.localisation = validated_data.get('localisation', instance.localisation)
         instance.contact = validated_data.get('contact', instance.contact)
-        instance.publisher_id = validated_data.get('publisher_id', instance.publisher_id)
+        instance.publier_par = validated_data.get('publier_par', instance.publier_par)
         instance.save()
         return instance
 class ConseilapiSerializer(serializers.Serializer):

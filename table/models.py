@@ -13,6 +13,7 @@ class Utilisateur(models.Model):
         return f' {self.fb_id}'
 class CentreMedical(models.Model):
     class Zones(models.IntegerChoices):
+        zone0=0
         zone1=1
         zone2=2
         zone3=3
@@ -25,7 +26,7 @@ class CentreMedical(models.Model):
     contact = models.CharField(max_length=200,blank=True)
     verifier = models.BooleanField()
     publier_par = models.ForeignKey(Utilisateur,on_delete=models.CASCADE) 
-    zone = models.IntegerField(choices=Zones.choices,default=Zones.zone1)
+    zone = models.IntegerField(choices=Zones.choices,default=Zones.zone0)
 
 class Pharmacie(models.Model):
     class Zones(models.IntegerChoices):
