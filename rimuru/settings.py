@@ -63,7 +63,7 @@ ROOT_URLCONF = 'rimuru.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,6 +140,7 @@ JAZZMIN_SETTINGS = {
 
 
 JAZZMIN_UI_TWEAKS = {
+    "custom_css":"common/css/main.css",
     "navbar_small_text": False,
     "footer_small_text": False,
     "body_small_text": True,

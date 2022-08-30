@@ -24,10 +24,17 @@ class CentreMedicalapiSerializer(serializers.Serializer):
     localisation = serializers.CharField(required=True, allow_blank=False, max_length=200)
     contact = serializers.CharField(required=False, allow_blank=True, max_length=200)
     verifier = serializers.BooleanField()
-    publier_par =serializers.CharField(required=True,max_length=100,allow_blank=False)
+    publier_par =serializers.CharField()
     zone = serializers.IntegerField()
+
     def create(self, validated_data):
-        return CentreMedical.objects.create(**validated_data)
+        return CentreMedical.objects.create(
+            nom = validated_data['nom'],
+            localisation = validated_data['localisation'],
+            verifier = validated_data['verifier'],
+            zone = validated_data['zone'],
+            publier_par= Utilisateur.objects.get(pk=validated_data['publier_par']),
+            )
 
     def update(self, instance, validated_data):
         instance.nom = validated_data.get('nom', instance.nom)
@@ -43,10 +50,17 @@ class PharmacieapiSerializer(serializers.Serializer):
     localisation = serializers.CharField(required=True, allow_blank=False, max_length=200)
     contact = serializers.CharField(required=False, allow_blank=True, max_length=200)
     verifier = serializers.BooleanField()
-    publier_par =serializers.CharField(required=True,max_length=100,allow_blank=False)
+    publier_par =serializers.CharField()
     zone = serializers.IntegerField()
+
     def create(self, validated_data):
-        return Pharmacie.objects.create(**validated_data)
+        return Pharmacie.objects.create(
+            nom = validated_data['nom'],
+            localisation = validated_data['localisation'],
+            verifier = validated_data['verifier'],
+            zone = validated_data['zone'],
+            publier_par= Utilisateur.objects.get(pk=validated_data['publier_par']),
+            )
 
     def update(self, instance, validated_data):
         instance.nom = validated_data.get('nom', instance.nom)
